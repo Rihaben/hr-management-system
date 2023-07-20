@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-hr-management-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-hr-management-app
+  template:
+    metadata:
+      labels:
+        app: spring-hr-management-app
+    spec:
+      containers:
+        - name: spring-hr-management-container
+          image: rihabbennour/javaapp:latest
+          ports:
+            - containerPort: 8080
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-hr-management-service
+spec:
+  selector:
+    app: spring-hr-management-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 3000
+    nodePort: 39990
+
+
+            
