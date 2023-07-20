@@ -29,16 +29,15 @@ metadata:
 spec:
   selector:
     app: spring-hr-management-app
+  type: LoadBalancer  
   ports:
     - protocol: TCP
       port: 80
       targetPort: 8080
-  type: LoadBalancer
-  ports:
-  - protocol: TCP
-    port: 5000
-    targetPort: 3000
-    nodePort: 30091
+      nodePort: 30091
+      
+  
+ 
 
 
             
